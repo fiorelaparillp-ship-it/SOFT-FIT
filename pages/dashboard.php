@@ -1,4 +1,4 @@
-
+﻿
 <?php
 /** @var mysqli $conexion */
 error_reporting(E_ALL);
