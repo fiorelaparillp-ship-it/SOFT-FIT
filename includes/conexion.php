@@ -1,10 +1,10 @@
 <?php
 
-$host = "mysql-28faa553-fiorelaparillp-efed.g.aivencloud.com";
-$user = "avnadmin";
-$pass = "CAMBIADO";
-$db   = "defaultdb";
-$port = 19526;
+$host = getenv("DB_HOST");
+$user = getenv("DB_USER");
+$pass = getenv("DB_PASSWORD");
+$db   = getenv("DB_NAME");
+$port = getenv("DB_PORT");
 
 $conexion = mysqli_init();
 
@@ -23,7 +23,7 @@ if (!mysqli_real_connect(
     die("Error de conexión: " . mysqli_connect_error());
 }
 
-date_default_timezone_set('America/Lima');
+date_defsault_timezone_set('America/Lima');
 
 mysqli_set_charset($conexion, "utf8");
 
