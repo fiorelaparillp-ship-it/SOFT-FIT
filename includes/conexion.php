@@ -23,7 +23,7 @@ if (!mysqli_real_connect(
     die("Error de conexión: " . mysqli_connect_error());
 }
 
-date_defsault_timezone_set('America/Lima');
+date_default_timezone_set('America/Lima');
 
 mysqli_set_charset($conexion, "utf8");
 
