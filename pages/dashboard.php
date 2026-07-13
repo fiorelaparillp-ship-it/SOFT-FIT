@@ -1,16 +1,15 @@
-﻿
-<?php
+﻿<?php
+ob_start();
+
 /** @var mysqli $conexion */
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
 session_start();
 
-if(!isset($_SESSION['usuario'])){
-
+if (!isset($_SESSION['usuario'])) {
     header("Location: ../login.php");
     exit();
-
 }
 
 include("../includes/conexion.php");
