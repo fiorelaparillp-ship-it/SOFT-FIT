@@ -66,21 +66,7 @@ if(isset($_POST['guardar'])){
         $imagen = time() . "_" . $_FILES['imagen']['name'];
         $temp = $_FILES['imagen']['tmp_name'];
 
-        $ruta = "../uploads/" . $imagen;
-
-if (move_uploaded_file($temp, $ruta)) {
-
-    echo "Imagen subida correctamente";
-
-} else {
-
-    echo "<pre>";
-    print_r(error_get_last());
-    echo "</pre>";
-
-    echo "Ruta destino: " . realpath("../uploads");
-    exit();
-}
+       move_uploaded_file($temp, "../uploads/" . $imagen);
 
     }
 
