@@ -157,7 +157,7 @@ function confirmLogout() {
         cancelButtonText: "Cancelar"
     }).then((result) => {
         if (result.isConfirmed) {
-           window.location.href = "/SOFT-FIT/logout.php";
+            window.location.href = "/logout.php";
         }
     });
 }
