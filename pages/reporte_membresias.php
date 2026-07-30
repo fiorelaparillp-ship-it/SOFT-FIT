@@ -2,7 +2,13 @@
 /** @var mysqli $conexion */
 require('../fpdf/fpdf.php');
 include('../includes/conexion.php');
+function convertirTexto($texto){
+    if ($texto === null) {
+        return '';
+    }
 
+    return iconv('UTF-8', 'ISO-8859-1//TRANSLIT', $texto);
+}
 $pdf = new FPDF('L'); // Horizontal
 
 $pdf->AddPage();
