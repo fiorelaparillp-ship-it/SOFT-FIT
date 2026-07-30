@@ -24,7 +24,5 @@ if (!mysqli_real_connect(
 }
 
 date_default_timezone_set('America/Lima');
-
 mysqli_set_charset($conexion, "utf8");
-
 ?>
