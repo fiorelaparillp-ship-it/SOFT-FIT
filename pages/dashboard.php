@@ -191,8 +191,7 @@ while($fila = mysqli_fetch_assoc($grafAsis)){
 content="width=device-width, initial-scale=1.0">
 
 <title>Dashboard</title>
-<link rel="icon" type="image/png" href="img/logonav.png">
-
+<link rel="icon" type="image/png" href="../img/logonav.png">
 <link rel="stylesheet" href="../css/style.css?v=1">
 
 
