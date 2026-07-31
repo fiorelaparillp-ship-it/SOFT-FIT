@@ -1,5 +1,7 @@
 <?php
 /** @var mysqli $conexion */
+ob_start();
+
 require('../fpdf/fpdf.php');
 include('../includes/conexion.php');
 
@@ -39,8 +41,8 @@ $conexion,
 
 while($c = mysqli_fetch_assoc($clientes)){
 
-    $nombre = utf8_decode($c['nombre']);
-    $correo = utf8_decode($c['correo']);
+$nombre = mb_convert_encoding($c['nombre'], 'ISO-8859-1', 'UTF-8');
+$correo = mb_convert_encoding($c['correo'], 'ISO-8859-1', 'UTF-8');
 
     $pdf->Cell(10,10,$c['id'],1);
     $pdf->Cell(50,10,$nombre,1);
@@ -51,6 +53,8 @@ while($c = mysqli_fetch_assoc($clientes)){
     $pdf->Ln();
 }
 
-$pdf->Output();
+ob_end_clean();
+
+$pdf->Output('I','reporte_clientes.pdf');
 
 ?>
