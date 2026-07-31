@@ -1,5 +1,7 @@
 <?php
 /** @var mysqli $conexion */
+ob_start();
+
 require('../fpdf/fpdf.php');
 include('../includes/conexion.php');
 
@@ -59,8 +61,8 @@ $pdf->SetFont('Arial','',10);
 while($c = mysqli_fetch_assoc($consulta)){
 
     $pdf->Cell(20,10,$c['id'],1);
-    $pdf->Cell(70,10,utf8_decode($c['nombre']),1);
-    $pdf->Cell(50,10,utf8_decode($c['plan']),1);
+    $pdf->Cell(70,10,mb_convert_encoding($c['nombre'], 'ISO-8859-1', 'UTF-8'),1);
+    $pdf->Cell(50,10,mb_convert_encoding($c['plan'], 'ISO-8859-1', 'UTF-8'),1);
     $pdf->Cell(50,10,$c['fecha_inicio'],1);
     $pdf->Cell(50,10,$c['fecha_fin'],1);
     $pdf->Cell(30,10,$c['estado'],1);
@@ -68,6 +70,8 @@ while($c = mysqli_fetch_assoc($consulta)){
     $pdf->Ln();
 }
 
-$pdf->Output();
+ob_end_clean();
+
+$pdf->Output('I','reporte_clientes_activos.pdf');
 
 ?>
