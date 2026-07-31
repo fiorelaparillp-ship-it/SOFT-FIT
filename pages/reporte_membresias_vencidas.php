@@ -1,5 +1,7 @@
 <?php
 /** @var mysqli $conexion */
+ob_start();
+
 require('../fpdf/fpdf.php');
 include('../includes/conexion.php');
 
@@ -59,8 +61,9 @@ $pdf->SetFont('Arial','',10);
 while($m = mysqli_fetch_assoc($consulta)){
 
     $pdf->Cell(20,10,$m['id'],1);
-    $pdf->Cell(70,10,utf8_decode($m['nombre']),1);
-    $pdf->Cell(50,10,utf8_decode($m['plan']),1);
+$pdf->Cell(70,10,mb_convert_encoding($m['nombre'], 'ISO-8859-1', 'UTF-8'),1);
+
+$pdf->Cell(50,10,mb_convert_encoding($m['plan'], 'ISO-8859-1', 'UTF-8'),1);
     $pdf->Cell(50,10,$m['fecha_inicio'],1);
     $pdf->Cell(50,10,$m['fecha_fin'],1);
     $pdf->Cell(30,10,$m['estado'],1);
@@ -68,6 +71,8 @@ while($m = mysqli_fetch_assoc($consulta)){
     $pdf->Ln();
 }
 
-$pdf->Output();
+ob_end_clean();
+
+$pdf->Output('I','reporte_membresias_vencidas.pdf');
 
 ?>
