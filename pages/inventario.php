@@ -65,7 +65,6 @@ $conexion,
 );
 ?>
  <title>Inventario</title>
-<link rel="icon" type="image/png" href="../img/logonav.png">
 
 <link rel="stylesheet" href="../css/style.css?v=1">
 <link rel="stylesheet" href="../css/dashboard.css">
@@ -75,6 +74,8 @@ $conexion,
 <h1 class="titulo-pagina">
  Inventario
 </h1>
+<link rel="icon" type="image/png" href="../img/logonav.png">
+
 <div class="inventario-acciones">
 
 
