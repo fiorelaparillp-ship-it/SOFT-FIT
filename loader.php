@@ -15,6 +15,8 @@ if(!isset($_SESSION['id'])){
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>Cargando SOFT-FIT...</title>
+<link rel="icon" type="image/png" href="img/logonav.png">
+
 
 <style>
 
