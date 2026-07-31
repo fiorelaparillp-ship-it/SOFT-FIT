@@ -1,5 +1,7 @@
 <?php
 /** @var mysqli $conexion */
+ob_start();
+
 require('../fpdf/fpdf.php');
 include('../includes/conexion.php');
 
@@ -59,14 +61,20 @@ while($v = mysqli_fetch_assoc($ventas)){
     }
 
     $pdf->Cell(15,10,$v['id'],1);
-    $pdf->Cell(60,10,utf8_decode($cliente),1);
+    $pdf->Cell(
+    60,
+    10,
+    mb_convert_encoding($cliente, 'ISO-8859-1', 'UTF-8'),
+    1
+);
     $pdf->Cell(35,10,'S/'.$v['total'],1);
     $pdf->Cell(50,10,$v['fecha'],1);
     $pdf->Cell(30,10,$v['metodo_pago'],1);
 
     $pdf->Ln();
 }
+ob_end_clean();
 
-$pdf->Output();
+$pdf->Output('I','reporte_ventas.pdf');
 
 ?>
