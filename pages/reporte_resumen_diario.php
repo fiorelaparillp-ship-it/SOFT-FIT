@@ -1,9 +1,10 @@
 <?php
 /** @var mysqli $conexion */
+ob_start();
+
 include("../includes/conexion.php");
 
 require('../fpdf/fpdf.php');
-
 class PDF extends FPDF
 {
     function Footer()
@@ -51,7 +52,14 @@ $pdf->Cell(0,10,'SOFT-FIT',0,1,'C');
 
 $pdf->SetFont('Arial','',11);
 
-$pdf->Cell(0,0,utf8_decode('Reporte Resumen Diario'),0,1,'C');
+$pdf->Cell(
+    0,
+    0,
+    iconv('UTF-8','ISO-8859-1//TRANSLIT','Reporte Resumen Diario'),
+    0,
+    1,
+    'C'
+);
 
 $pdf->Ln(15);
 
@@ -149,6 +157,8 @@ while($fila = mysqli_fetch_assoc($consulta)){
     );
 
 }
+ob_end_clean();
+
 $pdf->Output(
     'I',
     'Resumen_Diario_SOFTFIT.pdf'
