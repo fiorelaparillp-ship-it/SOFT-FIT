@@ -1,5 +1,7 @@
 <?php
 /** @var mysqli $conexion */
+ob_start();
+
 require('../fpdf/fpdf.php');
 include('../includes/conexion.php');
 function convertirTexto($texto){
@@ -66,9 +68,8 @@ if(!$consulta){
 
 while($m = mysqli_fetch_assoc($consulta)){
 
-    $cliente = utf8_decode($m['nombre']);
-    $plan = utf8_decode($m['plan']);
-
+$cliente = convertirTexto($m['nombre']);
+$plan = convertirTexto($m['plan']);
     $pdf->Cell(15,10,$m['id'],1);
     $pdf->Cell(60,10,$cliente,1);
     $pdf->Cell(40,10,$plan,1);
@@ -79,6 +80,8 @@ while($m = mysqli_fetch_assoc($consulta)){
     $pdf->Ln();
 }
 
-$pdf->Output();
+ob_end_clean();
+
+$pdf->Output('I','reporte_membresias.pdf');
 
 ?>
