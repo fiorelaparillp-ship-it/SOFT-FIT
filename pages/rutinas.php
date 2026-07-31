@@ -65,6 +65,7 @@ $totalClientesConRutina = mysqli_num_rows(
 <head>
 
 <title>Rutinas</title>
+<link rel="icon" type="image/png" href="../img/logonav.png">
 
 <link rel="stylesheet" href="../css/style.css">
 <link rel="stylesheet" href="../css/dashboard.css">

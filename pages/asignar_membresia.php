@@ -180,6 +180,7 @@ ON membresias.plan_id = planes_membresia.id");
 <meta charset="UTF-8">
 
 <title>Asignar Membresía</title>
+<link rel="icon" type="image/png" href="../img/logonav.png">
 
 <link rel="stylesheet" href="../css/style.css">
 <link rel="stylesheet" href="../css/dashboard.css">

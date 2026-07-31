@@ -27,6 +27,7 @@ if(!tienePermiso("ventas")){
 <meta charset="UTF-8">
 
 <title>Ventas</title>
+<link rel="icon" type="image/png" href="../img/logonav.png">
 
 <link rel="stylesheet" href="../css/style.css">
 <link rel="stylesheet" href="../css/dashboard.css">

@@ -75,7 +75,7 @@ VALUES('$producto_id','$cantidad','$total','$metodo_pago')";
           content="width=device-width, initial-scale=1.0">
 
     <title>Caja</title>
-<link rel="icon" type="image/png" href="img/logonav.png">
+<link rel="icon" type="image/png" href="../img/logonav.png">
 
     <link rel="stylesheet" href="../css/dashboard.css">
 

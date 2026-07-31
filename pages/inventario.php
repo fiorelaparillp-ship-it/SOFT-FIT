@@ -64,6 +64,9 @@ $conexion,
 "SELECT * FROM categorias ORDER BY nombre ASC"
 );
 ?>
+ <title>Inventario</title>
+<link rel="icon" type="image/png" href="../img/logonav.png">
+
 <link rel="stylesheet" href="../css/style.css?v=1">
 <link rel="stylesheet" href="../css/dashboard.css">
 

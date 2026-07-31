@@ -28,6 +28,7 @@ if(!tienePermiso("pos")){
       content="width=device-width, initial-scale=1.0">
 
 <title>POS SOFT-FIT</title>
+<link rel="icon" type="image/png" href="../img/logonav.png">
 
  
 <link rel="stylesheet" href="../css/dashboard.css">

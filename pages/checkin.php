@@ -357,6 +357,7 @@ ORDER BY id DESC");
 <meta charset="UTF-8">
 
 <title>Check-In Gym</title>
+<link rel="icon" type="image/png" href="../img/logonav.png">
 
 <link rel="stylesheet" href="../css/style.css">
 <link rel="stylesheet" href="../css/dashboard.css">

@@ -98,6 +98,7 @@ if(isset($_POST['guardar'])){
 <meta charset="UTF-8">
 
 <title>Progreso Clientes</title>
+<link rel="icon" type="image/png" href="../img/logonav.png">
 
 <link rel="stylesheet" href="../css/style.css">
 <link rel="stylesheet" href="../css/dashboard.css">
