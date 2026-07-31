@@ -1,5 +1,7 @@
 <?php
 /** @var mysqli $conexion */
+ob_start();
+
 require('../fpdf/fpdf.php');
 include('../includes/conexion.php');
 
@@ -50,7 +52,7 @@ ORDER BY asistencias.id DESC");
 
 while($a = mysqli_fetch_assoc($consulta)){
 
-    $cliente = utf8_decode($a['nombre']);
+$cliente = mb_convert_encoding($a['nombre'], 'ISO-8859-1', 'UTF-8');
 
     $pdf->Cell(20,10,$a['id'],1);
     $pdf->Cell(90,10,$cliente,1);
@@ -60,6 +62,8 @@ while($a = mysqli_fetch_assoc($consulta)){
     $pdf->Ln();
 }
 
-$pdf->Output();
+ob_end_clean();
+
+$pdf->Output('I','reporte_asistencias.pdf');
 
 ?>
