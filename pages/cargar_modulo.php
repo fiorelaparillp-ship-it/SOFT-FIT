@@ -10,7 +10,7 @@ if(!isset($_SESSION['usuario'])){
 include("../includes/conexion.php");
 include("../includes/permisos.php");
 
-if(!tienePermiso("checkin")){
+if(!tienePermiso("ajustes")){
     header("Location: dashboard.php");
     exit();
 }

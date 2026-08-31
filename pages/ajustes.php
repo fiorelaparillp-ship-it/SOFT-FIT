@@ -241,6 +241,7 @@ Copias de Seguridad
 <script src="../js/ajustes.js"></script>
 <script src="../js/usuarios.js"></script>
 <script src="../js/permisos.js"></script>
+<script src="../js/apariencia.js"></script>
 <script src="../js/toast.js"></script>
 
 </body>

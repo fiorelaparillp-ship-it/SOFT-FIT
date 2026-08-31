@@ -31,6 +31,9 @@ document.addEventListener("DOMContentLoaded", ()=>{
     if(modulo=="permisos" && typeof iniciarPermisos==="function"){
         iniciarPermisos();
     }
+    if(modulo=="apariencia" && typeof iniciarApariencia==="function"){
+    iniciarApariencia();
+}
 
 });
 
