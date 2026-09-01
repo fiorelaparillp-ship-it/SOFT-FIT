@@ -1,13 +1,12 @@
-.settings-layout{
+.settings-layout {
+    display: grid;
+    grid-template-columns: 42% 58%;
+    gap: 30px;
 
-display:grid;
+    min-height: calc(100vh - 60px);
+    height: auto;
 
-grid-template-columns:42% 58%;
-
-gap:30px;
-
-height:calc(100vh - 60px);
-
+    align-items: start;
 }
 
 .settings-menu{
@@ -20,18 +19,20 @@ gap:15px;
 
 }
 
-.settings-content{
+.settings-content {
+    background: #181828;
+    border-radius: 25px;
 
-background:#181828;
+    padding: 30px 32px;
 
-border-radius:25px;
+    border: 1px solid rgba(255,255,255,.05);
 
-padding:40px;
+    min-height: 650px;
 
-border:1px solid rgba(255,255,255,.05);
+    max-height: calc(100vh - 100px);
 
-overflow:auto;
-
+    overflow-y: auto;
+    overflow-x: hidden;
 }
 
 .settings-header{
@@ -875,4 +876,80 @@ TABLA PERMISOS
 
 .btn-guardar-apariencia i {
     margin-right: 7px;
+}
+/* =========================================================
+   AJUSTE FINAL - APARIENCIA
+========================================================= */
+
+.apariencia-module {
+    padding-bottom: 10px;
+}
+
+.apariencia-header {
+    margin-bottom: 22px;
+}
+
+.apariencia-header h2 {
+    font-size: 27px;
+}
+
+.apariencia-header p {
+    max-width: 700px;
+    line-height: 1.5;
+}
+
+
+/* TEMA */
+
+.tema-options {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+}
+
+.tema-card {
+    width: auto;
+    min-height: 125px;
+    padding: 18px;
+}
+
+
+/* COLORES */
+
+.color-options {
+    margin-top: 12px;
+    gap: 20px;
+}
+
+.color-option,
+.accent-option {
+    flex-shrink: 0;
+}
+
+
+/* LOGO */
+
+.logo-upload {
+    min-height: 62px;
+    box-sizing: border-box;
+}
+
+
+/* GUARDAR */
+
+.guardar-apariencia {
+    padding-top: 2px;
+    padding-bottom: 5px;
+}
+
+.btn-guardar-apariencia {
+    flex-shrink: 0;
+}
+.apariencia-module {
+    padding-bottom: 25px;
+}
+
+.guardar-apariencia {
+    margin-top: 5px;
+    padding-bottom: 10px;
 }
