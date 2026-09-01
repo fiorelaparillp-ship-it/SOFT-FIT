@@ -4,7 +4,7 @@ function iniciarApariencia() {
 
 
     /* =====================================================
-       TEMA
+       TEMA OSCURO / CLARO
     ===================================================== */
 
     const temas = document.querySelectorAll(".tema-card");
@@ -18,6 +18,10 @@ function iniciarApariencia() {
             });
 
             this.classList.add("selected");
+
+            const temaSeleccionado = this.dataset.theme;
+
+            aplicarTema(temaSeleccionado);
 
         });
 
@@ -84,7 +88,7 @@ function iniciarApariencia() {
             if(!archivo) return;
 
 
-            /* Validar tamaño */
+            /* Tamaño máximo */
 
             if(archivo.size > 2 * 1024 * 1024) {
 
@@ -101,7 +105,7 @@ function iniciarApariencia() {
             }
 
 
-            /* Validar formato */
+            /* Formatos permitidos */
 
             const tiposPermitidos = [
                 "image/png",
@@ -125,7 +129,7 @@ function iniciarApariencia() {
             }
 
 
-            /* Mostrar preview */
+            /* Vista previa */
 
             const lector = new FileReader();
 
@@ -146,7 +150,7 @@ function iniciarApariencia() {
 
 
     /* =====================================================
-       GUARDAR
+       GUARDAR CONFIGURACIÓN
     ===================================================== */
 
     const btnGuardar =
@@ -190,12 +194,17 @@ function iniciarApariencia() {
             };
 
 
-            /* Guardar temporalmente */
+            /* Guardar */
 
             localStorage.setItem(
                 "softfit_apariencia",
                 JSON.stringify(configuracion)
             );
+
+
+            /* Aplicar tema */
+
+            aplicarTema(configuracion.tema);
 
 
             Swal.fire({
@@ -223,6 +232,136 @@ function iniciarApariencia() {
             });
 
         });
+
+    }
+
+
+    /* =====================================================
+       CARGAR CONFIGURACIÓN GUARDADA
+    ===================================================== */
+
+    cargarConfiguracion();
+
+}
+
+
+/* =========================================================
+   APLICAR TEMA
+========================================================= */
+
+function aplicarTema(tema) {
+
+    if(tema === "light") {
+
+        document.body.classList.add("light-mode");
+
+    } else {
+
+        document.body.classList.remove("light-mode");
+
+    }
+
+}
+
+
+/* =========================================================
+   CARGAR CONFIGURACIÓN
+========================================================= */
+
+function cargarConfiguracion() {
+
+    const guardado =
+        localStorage.getItem("softfit_apariencia");
+
+
+    if(!guardado) {
+
+        aplicarTema("dark");
+
+        return;
+
+    }
+
+
+    try {
+
+        const configuracion =
+            JSON.parse(guardado);
+
+
+        /* Tema */
+
+        aplicarTema(
+            configuracion.tema || "dark"
+        );
+
+
+        /* Seleccionar tarjeta */
+
+        const temaCard =
+            document.querySelector(
+                `.tema-card[data-theme="${configuracion.tema}"]`
+            );
+
+
+        if(temaCard) {
+
+            document.querySelectorAll(".tema-card")
+                .forEach(t => t.classList.remove("selected"));
+
+            temaCard.classList.add("selected");
+
+        }
+
+
+        /* Color principal */
+
+        if(configuracion.colorPrincipal) {
+
+            const color =
+                document.querySelector(
+                    `.color-option[data-primary="${configuracion.colorPrincipal}"]`
+                );
+
+            if(color) {
+
+                document.querySelectorAll(".color-option")
+                    .forEach(c => c.classList.remove("selected"));
+
+                color.classList.add("selected");
+
+            }
+
+        }
+
+
+        /* Color de acento */
+
+        if(configuracion.colorAcento) {
+
+            const acento =
+                document.querySelector(
+                    `.accent-option[data-accent="${configuracion.colorAcento}"]`
+                );
+
+            if(acento) {
+
+                document.querySelectorAll(".accent-option")
+                    .forEach(a => a.classList.remove("selected"));
+
+                acento.classList.add("selected");
+
+            }
+
+        }
+
+
+    } catch(error) {
+
+        console.error(
+            "Error cargando configuración:",
+            error
+        );
 
     }
 

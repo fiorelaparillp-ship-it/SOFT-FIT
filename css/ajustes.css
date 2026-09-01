@@ -953,3 +953,114 @@ TABLA PERMISOS
     margin-top: 5px;
     padding-bottom: 10px;
 }
+/* =========================================================
+   MODO CLARO
+========================================================= */
+
+body.light-mode {
+
+    background: #f4f5f9 !important;
+
+}
+
+
+/* Panel principal */
+
+body.light-mode .settings-content {
+
+    background: #ffffff;
+
+    border-color: #e5e7eb;
+
+}
+
+
+/* Encabezado */
+
+body.light-mode .apariencia-header h2 {
+
+    color: #111827;
+
+}
+
+body.light-mode .apariencia-header p {
+
+    color: #6b7280;
+
+}
+
+
+/* Títulos */
+
+body.light-mode .apariencia-section h3 {
+
+    color: #111827;
+
+}
+
+
+/* Textos */
+
+body.light-mode .apariencia-section p {
+
+    color: #6b7280;
+
+}
+
+
+/* Divisores */
+
+body.light-mode .apariencia-divider {
+
+    background: #e5e7eb;
+
+}
+
+
+/* Tarjetas de tema */
+
+body.light-mode .tema-card {
+
+    background: #f8fafc;
+
+    border-color: #dbe1ea;
+
+}
+
+body.light-mode .tema-card strong {
+
+    color: #111827;
+
+}
+
+
+/* Logo */
+
+body.light-mode .logo-upload {
+
+    background: #f8fafc;
+
+    border-color: #dbe1ea;
+
+}
+
+body.light-mode .logo-upload span {
+
+    color: #6b7280;
+
+}
+
+
+/* Guardar */
+
+body.light-mode .guardar-apariencia h3 {
+
+    color: #111827;
+
+}
+
+body.light-mode .guardar-apariencia p {
+
+    color: #6b7280;
+
+}

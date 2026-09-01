@@ -1,28 +1,126 @@
 <?php
 
-$host = getenv("DB_HOST");
-$user = getenv("DB_USER");
-$pass = getenv("DB_PASSWORD");
-$db   = getenv("DB_NAME");
-$port = getenv("DB_PORT");
+/*
+|--------------------------------------------------------------------------
+| CONEXIÓN A BASE DE DATOS
+|--------------------------------------------------------------------------
+| Funciona tanto en XAMPP como en Render + Aiven
+|--------------------------------------------------------------------------
+*/
+
+date_default_timezone_set('America/Lima');
+
+
+/*
+|--------------------------------------------------------------------------
+| DETECTAR ENTORNO
+|--------------------------------------------------------------------------
+*/
+
+if (getenv("DB_HOST")) {
+
+    // ==========================================================
+    // RENDER + AIVEN
+    // ==========================================================
+
+    $host = getenv("DB_HOST");
+    $user = getenv("DB_USER");
+    $pass = getenv("DB_PASSWORD");
+    $db   = getenv("DB_NAME");
+    $port = getenv("DB_PORT");
+
+    $usarSSL = true;
+
+} else {
+
+    // ==========================================================
+    // XAMPP LOCAL
+    // ==========================================================
+
+    $host = "localhost";
+    $user = "root";
+    $pass = "";
+    $db   = "softfit";
+    $port = 3306;
+
+    $usarSSL = false;
+
+}
+
+
+/*
+|--------------------------------------------------------------------------
+| CREAR CONEXIÓN
+|--------------------------------------------------------------------------
+*/
 
 $conexion = mysqli_init();
 
-mysqli_ssl_set($conexion, NULL, NULL, NULL, NULL, NULL);
 
-if (!mysqli_real_connect(
+/*
+|--------------------------------------------------------------------------
+| CONFIGURACIÓN SSL
+|--------------------------------------------------------------------------
+| Solo Aiven/Render necesita SSL.
+|--------------------------------------------------------------------------
+*/
+
+if ($usarSSL) {
+
+    mysqli_ssl_set(
+        $conexion,
+        NULL,
+        NULL,
+        NULL,
+        NULL,
+        NULL
+    );
+
+}
+
+
+/*
+|--------------------------------------------------------------------------
+| CONECTAR
+|--------------------------------------------------------------------------
+*/
+
+$flags = $usarSSL ? MYSQLI_CLIENT_SSL : 0;
+
+mysqli_real_connect(
     $conexion,
     $host,
     $user,
     $pass,
     $db,
-    $port,
+    (int)$port,
     NULL,
-    MYSQLI_CLIENT_SSL
-)) {
-    die("Error de conexión: " . mysqli_connect_error());
+    $flags
+);
+
+
+/*
+|--------------------------------------------------------------------------
+| COMPROBAR ERROR
+|--------------------------------------------------------------------------
+*/
+
+if (mysqli_connect_errno()) {
+
+    die(
+        "Error de conexión a la base de datos: "
+        . mysqli_connect_error()
+    );
+
 }
 
-date_default_timezone_set('America/Lima');
-mysqli_set_charset($conexion, "utf8");
+
+/*
+|--------------------------------------------------------------------------
+| UTF-8
+|--------------------------------------------------------------------------
+*/
+
+mysqli_set_charset($conexion, "utf8mb4");
+
 ?>
