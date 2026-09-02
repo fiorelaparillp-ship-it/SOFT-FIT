@@ -4,7 +4,20 @@
 session_start();
 
 date_default_timezone_set('America/Lima');
+function fechaLima($fecha){
 
+    if(empty($fecha)){
+        return null;
+    }
+
+    $fechaUTC = new DateTime($fecha, new DateTimeZone('UTC'));
+
+    $fechaUTC->setTimezone(
+        new DateTimeZone('America/Lima')
+    );
+
+    return $fechaUTC;
+}
 if(!isset($_SESSION['usuario'])){
     header("Location: ../login.php");
     exit();
@@ -506,8 +519,10 @@ Caja Abierta
 
         <h3>
 
-        <?php echo date("H:i",strtotime($caja['fecha_apertura'])); ?>
-
+       <?php
+$horaApertura = fechaLima($caja['fecha_apertura']);
+echo $horaApertura->format("H:i");
+?>
         </h3>
 
         <span>Hora de Apertura</span>
@@ -665,7 +680,11 @@ Totales
 <td>
 
 <?php
-echo date("d/m/Y", strtotime($h['fecha_apertura']));
+
+$aperturaLima = fechaLima($h['fecha_apertura']);
+
+echo $aperturaLima->format("d/m/Y");
+
 ?>
 
 <br>
@@ -673,11 +692,12 @@ echo date("d/m/Y", strtotime($h['fecha_apertura']));
 <small style="color:#9ca3af;">
 
 <?php
-echo date("H:i", strtotime($h['fecha_apertura']));
+
+echo $aperturaLima->format("H:i");
+
 ?>
 
 </small>
-
 </td>
 <td>
 
@@ -685,13 +705,15 @@ echo date("H:i", strtotime($h['fecha_apertura']));
 
 if($h['fecha_cierre']){
 
-    echo date("d/m/Y", strtotime($h['fecha_cierre']));
+    $cierreLima = fechaLima($h['fecha_cierre']);
+
+    echo $cierreLima->format("d/m/Y");
 
     echo "<br>";
 
     echo "<small style='color:#9ca3af;'>";
 
-    echo date("H:i", strtotime($h['fecha_cierre']));
+    echo $cierreLima->format("H:i");
 
     echo "</small>";
 
