@@ -39,7 +39,7 @@ $stockCritico = mysqli_fetch_assoc(
 mysqli_query($conexion,"
 SELECT COUNT(*) total
 FROM productos
-WHERE stock <= 5
+WHERE stock <= 10
 AND stock > 0
 ")
 )['total'];
@@ -112,7 +112,7 @@ $conexion,
 
 <p>Críticos</p>
 
-<small>Stock ≤ 5</small>
+<small>Stock ≤ 10</small>
 
 </div>
 
@@ -396,7 +396,7 @@ if($fila['stock'] == 0){
     $estado = "agotado";
     $clase = "estado-agotado";
 
-}elseif($fila['stock'] <= 5){
+}elseif($fila['stock'] <= 10){
 
     $estado = "critico";
     $clase = "estado-critico";
