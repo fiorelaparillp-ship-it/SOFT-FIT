@@ -70,60 +70,195 @@ box-shadow:
     margin-bottom:30px;
     filter:drop-shadow(0 0 15px rgba(124,58,237,.5));
 }
+/* ================================
+   SIDEBAR - DISEÑO CLARO SOFT-FIT
+================================ */
+
+.sidebar{
+
+    width:230px;
+    height:100vh;
+
+    background:#ffffff;
+
+    position:fixed;
+    left:0;
+    top:0;
+
+    padding:25px;
+
+    border-right:1px solid #e5e7eb;
+
+    box-shadow:4px 0 20px rgba(0,0,0,.05);
+
+    overflow-y:auto;
+
+}
+
+
+/* LOGO */
+
+.logo{
+
+    width:180px;
+
+    display:block;
+
+    margin:auto;
+
+    margin-bottom:30px;
+
+    filter:none;
+
+}
+
+
+/* INFORMACIÓN DEL USUARIO */
+
 .sidebar h2{
-    color:#b395cd;
+
+    color:#374151;
+
     margin-top:15px;
+
 }
 
 .sidebar p{
+
     margin-top:10px;
-    color:#aaa;
+
+    color:#6b7280;
+
     line-height:1.8;
+
 }
 
-/* MENU */
+
+/* ================================
+   MENU
+================================ */
 
 .sidebar ul{
+
     list-style:none;
+
     margin-top:30px;
+
+    padding:0;
+
 }
 
 .sidebar ul li{
+
     margin-bottom:8px;
+
 }
+
 
 .sidebar ul li a{
 
     display:flex;
+
     align-items:center;
 
-    padding:15px 18px;
+    gap:12px;
 
-    border-radius:14px;
+    padding:13px 16px;
 
-    color:#d1d5db;
+    border-radius:12px;
+
+    color:#374151;
 
     text-decoration:none;
 
     font-weight:500;
 
-    transition:.3s;
+    transition:all .25s ease;
 
 }
+
+
+/* ICONOS */
+
+.sidebar ul li a i{
+
+    width:22px;
+
+    text-align:center;
+
+    color:#7c3aed;
+
+    font-size:17px;
+
+    transition:.25s;
+
+}
+
+
+/* HOVER */
+
 .sidebar ul li a:hover{
 
-    background:linear-gradient(
-    90deg,
-    #7b2cbf,
-    #9d4edd
-    );
+    background:#f3e8ff;
 
-    color:white;
+    color:#6d28d9;
 
-    transform:translateX(6px);
+    transform:translateX(4px);
 
-    box-shadow:
-    0 0 20px rgba(124,58,237,.4);
+}
+
+
+/* ICONO AL PASAR EL MOUSE */
+
+.sidebar ul li a:hover i{
+
+    color:#6d28d9;
+
+}
+
+
+/* ================================
+   ELEMENTO ACTIVO
+================================ */
+
+.sidebar ul li a.active{
+
+    background:#f3e8ff;
+
+    color:#6d28d9;
+
+    font-weight:600;
+
+}
+
+.sidebar ul li a.active i{
+
+    color:#6d28d9;
+
+}
+
+
+/* ================================
+   SCROLL DEL SIDEBAR
+================================ */
+
+.sidebar::-webkit-scrollbar{
+
+    width:5px;
+
+}
+
+.sidebar::-webkit-scrollbar-thumb{
+
+    background:#ddd6fe;
+
+    border-radius:10px;
+
+}
+
+.sidebar::-webkit-scrollbar-track{
+
+    background:transparent;
 
 }
 
