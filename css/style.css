@@ -70,6 +70,61 @@ box-shadow:
     margin-bottom:30px;
     filter:drop-shadow(0 0 15px rgba(124,58,237,.5));
 }
+.logo{
+
+    width:180px;
+
+    display:block;
+
+    margin:auto;
+
+    margin-bottom:30px;
+
+    filter:none;
+
+}
+/* ================================
+   INFORMACIÓN DEL USUARIO
+================================ */
+
+.sidebar-user{
+    color:#374151;
+    text-align:center;
+}
+
+.sidebar-user h3{
+    color:#374151;
+    font-size:16px;
+    margin:10px 0 6px;
+}
+
+.sidebar-user .avatar-admin{
+
+    background:#f3e8ff;
+
+    color:#7c3aed;
+
+    border:1px solid #ddd6fe;
+
+}
+
+.sidebar-user .badge-admin{
+
+    background:#f3e8ff;
+
+    color:#6d28d9;
+
+    border:1px solid #ddd6fe;
+
+}
+
+.sidebar-user .user-status{
+
+    color:#16a34a;
+
+    font-size:12px;
+
+}
 /* ================================
    SIDEBAR - DISEÑO CLARO SOFT-FIT
 ================================ */
