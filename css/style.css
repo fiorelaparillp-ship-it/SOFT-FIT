@@ -64,21 +64,18 @@ box-shadow:
 
 }
 .logo{
-    width:180px;
-    display:block;
-    margin:auto;
-    margin-bottom:30px;
-    filter:drop-shadow(0 0 15px rgba(124,58,237,.5));
-}
-.logo{
 
     width:180px;
 
     display:block;
 
-    margin:auto;
+    margin:0 auto 30px;
 
-    margin-bottom:30px;
+    padding:10px;
+
+    background:#111827;
+
+    border-radius:14px;
 
     filter:none;
 
