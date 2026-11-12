@@ -234,7 +234,7 @@ Aquí tienes un resumen general del gimnasio
 
 </div>
 
-<
+
 <div class="header-date">
 
 <?php
