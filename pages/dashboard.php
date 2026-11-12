@@ -275,7 +275,7 @@ echo ucfirst("$dia, $numero de $mes de $anio");
 
 
 </div>
-//*buscador*//
+
 <div class="top-search">
     <input
         type="text"
