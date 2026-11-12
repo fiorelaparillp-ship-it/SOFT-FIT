@@ -85,12 +85,12 @@ box-shadow:
 ================================ */
 
 .sidebar-user{
-    color:#374151;
+    color:#ffffff;
     text-align:center;
 }
 
 .sidebar-user h3{
-    color:#374151;
+    color:#ffffff;
     font-size:16px;
     margin:10px 0 6px;
 }
@@ -131,7 +131,12 @@ box-shadow:
     width:230px;
     height:100vh;
 
-    background:#ffffff;
+    background:linear-gradient(
+        180deg,
+        #070710,
+        #0d0d1f,
+        #120b25
+    );
 
     position:fixed;
     left:0;
@@ -139,9 +144,9 @@ box-shadow:
 
     padding:25px;
 
-    border-right:1px solid #e5e7eb;
+    border-right:1px solid rgba(168,85,247,.25);
 
-    box-shadow:4px 0 20px rgba(0,0,0,.05);
+    box-shadow:0 0 30px rgba(168,85,247,.15);
 
     overflow-y:auto;
 
@@ -384,7 +389,8 @@ th{
 }
 
 td{
-    background:#1a1a1a;
+    background:#111827;
+    color:#e5e7eb;
     padding:14px;
     border-bottom:1px solid #2d2d2d;
 }
