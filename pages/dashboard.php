@@ -234,20 +234,58 @@ Aquí tienes un resumen general del gimnasio
 
 </div>
 
+<
 <div class="header-date">
 
-<?php echo date("d/m/Y"); ?>
+<?php
+$dias = [
+    "domingo",
+    "lunes",
+    "martes",
+    "miércoles",
+    "jueves",
+    "viernes",
+    "sábado"
+];
+
+$meses = [
+    "enero",
+    "febrero",
+    "marzo",
+    "abril",
+    "mayo",
+    "junio",
+    "julio",
+    "agosto",
+    "septiembre",
+    "octubre",
+    "noviembre",
+    "diciembre"
+];
+
+$dia = $dias[date("w")];
+$numero = date("d");
+$mes = $meses[date("n") - 1];
+$anio = date("Y");
+
+echo ucfirst("$dia, $numero de $mes de $anio");
+?>
 
 </div>
 
+
 </div>
+//*buscador*//
 <div class="top-search">
+    <input
+        type="text"
+        id="buscadorDashboard"
+        placeholder="Buscar clientes, ventas, productos..."
+        autocomplete="off">
 
-<input
-type="text"
-placeholder="Buscar clientes, ventas, productos...">
-
+    <div id="resultadosBusqueda" class="resultados-busqueda"></div>
 </div>
+
 <div class="gym-banner">
 
 <div class="banner-content">
@@ -683,6 +721,77 @@ ticks:{color:'white'}
 
 
 
+</script>
+<script>
+const buscador = document.getElementById('buscadorDashboard');
+const resultados = document.getElementById('resultadosBusqueda');
+
+let temporizador;
+
+buscador.addEventListener('input', function () {
+    clearTimeout(temporizador);
+
+    const texto = this.value.trim();
+
+    if (texto.length < 2) {
+        resultados.innerHTML = '';
+        resultados.style.display = 'none';
+        return;
+    }
+
+    temporizador = setTimeout(() => {
+        fetch('buscar_dashboard.php?q=' + encodeURIComponent(texto))
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('No se pudo realizar la búsqueda');
+                }
+                return response.json();
+            })
+            .then(datos => {
+                resultados.innerHTML = '';
+
+                if (datos.length === 0) {
+                    resultados.innerHTML =
+                        '<div class="resultado-vacio">No se encontraron resultados</div>';
+                } else {
+                    datos.forEach(item => {
+                        const enlace = document.createElement('a');
+                        enlace.className = 'resultado-item';
+                        enlace.href = item.url;
+
+                        const titulo = document.createElement('strong');
+                        titulo.textContent = item.titulo;
+
+                        const tipo = document.createElement('span');
+                        tipo.textContent = item.tipo;
+
+                        const detalle = document.createElement('small');
+                        detalle.textContent = item.detalle;
+
+                        enlace.appendChild(tipo);
+                        enlace.appendChild(titulo);
+                        enlace.appendChild(detalle);
+
+                        resultados.appendChild(enlace);
+                    });
+                }
+
+                resultados.style.display = 'block';
+            })
+            .catch(error => {
+                resultados.innerHTML =
+                    '<div class="resultado-vacio">Error al buscar. Intenta nuevamente.</div>';
+                resultados.style.display = 'block';
+                console.error(error);
+            });
+    }, 300);
+});
+
+document.addEventListener('click', function (e) {
+    if (!e.target.closest('.top-search')) {
+        resultados.style.display = 'none';
+    }
+});
 </script>
 
 </body>
