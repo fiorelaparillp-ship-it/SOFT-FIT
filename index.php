@@ -1,5 +1,5 @@
-
 <?php
+/** @var mysqli $conexion */
 session_start();
 
 // Si no hay sesión iniciada, ir al login

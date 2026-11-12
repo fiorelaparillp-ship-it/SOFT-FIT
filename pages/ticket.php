@@ -1,4 +1,6 @@
 <?php
+/** @var mysqli $conexion */
+session_start();
 ob_start();
 require_once '../libs/dompdf/autoload.inc.php';
 
