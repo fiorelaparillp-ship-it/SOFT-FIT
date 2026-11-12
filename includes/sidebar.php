@@ -64,12 +64,6 @@ Asignar Membresía
 </a>
 </li>
 
-<li>
-<a href="../loader.php?destino=pages/rutinas.php">
-<i class="fa-solid fa-dumbbell"></i>
-Rutinas
-</a>
-</li>
 
 <li>
 <a href="../loader.php?destino=pages/progreso.php">
